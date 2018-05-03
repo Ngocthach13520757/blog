@@ -21,7 +21,11 @@
                         <a href="{{action('PostController@edit', $post->id)}}" class="btn btn-primary btn-block">Edit</a>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{action('PostController@destroy', $post->id)}}" class="btn btn-danger btn-block">Delete</a>
+                        <form action="{{action('PostController@destroy', $post->id)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

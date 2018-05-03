@@ -33,9 +33,11 @@
                         <tr>
                             <td>{{$post->id}}</td>
                             <td>{{str_limit($post->title,30)}}</td>
-                            <td>{{substr($post->body,0,50)}}</td>
-                            <td>{{$post->created_at}}</td>
-                            <td><a href="{{action('PostController@show',$post->id)}}" class="btn btn-default">View</a> <a href="{{action('PostController@edit', $post->id)}}" class="btn btn-default">Edit</a></td>
+                            <td>{{str_limit($post->body,50)}}</td>
+                            <td>{{date('M j, Y',strtotime($post->created_at))}}</td>
+                            <td><a href="{{action('PostController@show',$post->id)}}" class="btn btn-primary">View</a>
+                                <a href="{{action('PostController@edit', $post->id)}}" class="btn btn-warning">Edit</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

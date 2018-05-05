@@ -1,4 +1,7 @@
 @extends('main')
+
+@section('title', 'Show Blog')
+
 @section('content')
     <div class="row">
         <div class="col-md-8">
@@ -28,6 +31,8 @@
                         </form>
                     </div>
                 </div>
+                <hr>
+                <a href="" class="btn btn-default btn-block">See all post</a>
             </div>
         </div>
     </div>

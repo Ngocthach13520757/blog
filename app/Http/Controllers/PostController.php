@@ -40,11 +40,13 @@ class PostController extends Controller
         //validate form data( if error appear while validate it jump back to create form)
         $this->validate($request,[
             'title' => 'required|max:255',
+            'slug'  => 'required|min:5|max:255|unique:posts,slug',
             'body' => 'required'
         ]);//validate the request object with array of rules
         //store to database
         $post = new Post();
         $post->title = $request->title;
+        $post->slug = str_replace(' ','_',$request->slug);
         $post->body = $request->body;
         $post->save();
         Session::flash('success','The blog post was successfully save');
@@ -87,12 +89,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'title' => 'required|max:255',
-            'body' =>'required',    
-        ]);
         $post = Post::find($id);
+        if($post->slug === $request->slug){
+            $this->validate($request,[
+                'title' => 'required|max:255',
+                'body' =>'required',    
+            ]);
+            
+        }else{
+            $this->validate($request,[
+                'title' => 'required|max:255',
+                'slug'  => 'required|min:5|max:255|unique:posts,slug',
+                'body' =>'required',    
+            ]);
+        }
         $post->title = $request->title;
+        $post->slug = str_replace(' ', '_', $request->slug);
         $post->body = $request->body;
         $post->save();
         Session::flash('success','This post has been updated successfully!');

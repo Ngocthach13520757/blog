@@ -17,36 +17,16 @@
         </div><!--end of header row-->
         <div class="row">
             <div class="col-md-8">
-                <div class="post">
-                    <h3>Blog title</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, alias quam quod voluptatibus totam illo voluptas. Ea rerum tenetur molestiae! Cumque obcaecati sequi, excepturi soluta nulla totam tempore facilis asperiores!</p>
-                    <a href="#" class="btn btn-primary">Read more</a>
-                </div>
-                <hr>
-                <div class="post">
-                    <h3>Blog title</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, alias quam quod voluptatibus totam illo voluptas. Ea rerum tenetur molestiae! Cumque obcaecati sequi, excepturi soluta nulla totam tempore facilis asperiores!</p>
-                    <a href="#" class="btn btn-primary">Read more</a>
-                </div>
-                <hr>
-                <div class="post">
-                    <h3>Blog title</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, alias quam quod voluptatibus totam illo voluptas. Ea rerum tenetur molestiae! Cumque obcaecati sequi, excepturi soluta nulla totam tempore facilis asperiores!</p>
-                    <a href="#" class="btn btn-primary">Read more</a>
-                </div>
-                <hr>
-                <div class="post">
-                    <h3>Blog title</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, alias quam quod voluptatibus totam illo voluptas. Ea rerum tenetur molestiae! Cumque obcaecati sequi, excepturi soluta nulla totam tempore facilis asperiores!</p>
-                    <a href="#" class="btn btn-primary">Read more</a>
-                </div>
-                <hr>
-                <div class="post">
-                    <h3>Blog title</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, alias quam quod voluptatibus totam illo voluptas. Ea rerum tenetur molestiae! Cumque obcaecati sequi, excepturi soluta nulla totam tempore facilis asperiores!</p>
-                    <a href="#" class="btn btn-primary">Read more</a>
-                </div>
-                <hr>
+                @foreach ($posts as $post)
+                    <div class="post">
+                        <h3>{{$post->title}}</h3>
+                        <p>{{str_limit( $post->body,300)}}</p>
+                        <a href="{{route('blog.single',$post->slug)}}" class="btn btn-primary">Read more</a>
+                    </div>
+                    <hr>
+                @endforeach
+                
+                
             </div>
             <div class="col-md-3 col-md-offset-1">
                 <h3>sidebar</h3>

@@ -17,6 +17,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="{{Request::is('/') ? 'active' : ''}}"><a href="/">Home</a></li>
+                        <li class="{{Request::is('blogs') ? 'active' : ''}}"><a href="/blogs">Blog</a></li>
                         <li class="{{Request::is('about') ? 'active' : ''}}"><a href="/about">About</a></a></li>
                         <li class="{{Request::is('contact') ? 'active' : ''}}"><a href="/contact">Contact</a></a></li>
                     </ul>
@@ -27,16 +28,27 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
+                        @if(Auth::check())
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{Auth::user()->name}}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
+                                <li><a href="{{route('posts.index')}}">Post</a></li>
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li>
+                                    <a href="" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
                             </ul>
                         </li>
+                        @else
+                            <a href="{{route('login')}}" class="btn btn-primary">Login</a>
+                        @endif
                     </ul>
                 </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

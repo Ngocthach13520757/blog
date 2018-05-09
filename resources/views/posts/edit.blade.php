@@ -5,12 +5,16 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form action="{{action('PostController@update',$post->id)}}" method="POST">
+            <form action="{{route('posts.update',$post->id)}}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
                     <label for="title">Title:</label>
                     <input type="text" name="title" class="form-control" value="{{$post->title}}">
+                </div>
+                <div class="form-group">
+                    <label for="slug">Slug</label>
+                    <input type="text" name="slug" id="slug" class="form-control" value="{{$post->slug}}">
                 </div>
                 <div class="fom-group">
                     <label for="body">Body:</label>

@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <hr>
-                <a href="" class="btn btn-default btn-block">See all post</a>
+                <a href="{{action('PostController@index')}}" class="btn btn-default btn-block">See all post</a>
             </div>
         </div>
     </div>

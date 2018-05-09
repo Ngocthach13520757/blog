@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class PagesController extends Controller
 {
     public function getIndex(){
+        //Debugbar::info('hello');
         return view('pages.welcome');
     }
 

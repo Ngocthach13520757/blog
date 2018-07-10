@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message:</label>
-                        <textarea type="text" name="message" class="form-control" id="message">Type the message here....</textarea>
+                        <textarea type="text" name="message" class="form-control" id="message" placeholder="Type content"></textarea>
 
                     </div>
                     <input type="submit" value="Send message" class="btn btn-success"> 

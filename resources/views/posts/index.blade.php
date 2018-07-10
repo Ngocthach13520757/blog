@@ -13,14 +13,10 @@
         </div>
         
     </div>
+    <br>
     <div class="row">
         <div class="col-md-12">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <th>#</th>
                     <th>Title</th>

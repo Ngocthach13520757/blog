@@ -3,6 +3,9 @@
 @section('title','edit')
 
 @section('content')
+    @php
+        var_dump($post);
+    @endphp
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <form action="{{route('posts.update',$post->id)}}" method="POST">
